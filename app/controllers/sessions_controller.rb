@@ -12,8 +12,8 @@ class SessionsController < ApplicationController
     def destroy
         user = User.find_by(id: session[:id])
         if user
-            session.delet :user_id
-            head: :no_content, status: :no_content
+            session.delete :user_id
+            head :no_content, status: :no_content
         else
             render json: { errors: "NOT AUTHORIZED" }, status: :unauthorized
         end

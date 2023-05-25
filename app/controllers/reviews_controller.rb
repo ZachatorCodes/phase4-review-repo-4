@@ -25,8 +25,9 @@ class ReviewsController < ApplicationController
 
     def destroy
         user = User.find_by(id: session[:user_id])
+        review = Review.find_by(id: params[:id])
         if user
-            Review.destroy
+            review.destroy
             head :no_content, status: :no_content
         else
             render json: { errors: ["not authorized"]}, status: :unauthorized
@@ -35,8 +36,9 @@ class ReviewsController < ApplicationController
 
     def update
         user = User.find_by(id: session[:user_id])
+        review = Review.find_by(id: params[:id])
         if user
-            review = Review.update(review_params)
+            review = review.update(review_params)
             render json: review, status: :created
         else
             render json: { errors: ["not authorized"]}, status: :unauthorized
