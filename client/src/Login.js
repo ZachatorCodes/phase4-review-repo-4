@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
 
 const Login = ({ setUser }) => {
     const [login, setLogin] = useState(true)
@@ -13,8 +14,8 @@ const Login = ({ setUser }) => {
                 </div>
             ) : (
                 <div>
-                    {/* <SignupForm setUser={setUser} /> */}
-                    <button onClick={() => setLogin(true)} />
+                    <SignupForm setUser={setUser} />
+                    <button onClick={() => setLogin(true)}>Already have an account?</button>
                 </div>
             )}
         </div>
