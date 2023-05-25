@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
             session.delete :user_id
             head :no_content, status: :no_content
         else
-            render json: { errors: "NOT AUTHORIZED" }, status: :unauthorized
+            render json: { error: "NOT AUTHORIZED" }, status: :unauthorized
         end
     end
 end
