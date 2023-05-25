@@ -20,6 +20,7 @@ class EncabulatorsController < ApplicationController
             end
         else
             render json: { error: "NOT AUTHORIZED"}, status: :unauthorized
+        end
     end
 
     private
