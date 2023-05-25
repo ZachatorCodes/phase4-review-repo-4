@@ -1,0 +1,2 @@
+class EncabulatorsController < ApplicationController
+end
