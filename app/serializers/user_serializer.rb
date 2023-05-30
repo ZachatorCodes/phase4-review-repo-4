@@ -1,6 +1,6 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :password_digest, :name, :bio
+  attributes :id, :username, :name, :bio
 
-  has_many :reviews
-  has_many :users, through: :reviews
+  # has_many :reviews
+  # has_many :encabulators
 end

@@ -14,7 +14,7 @@ const Login = ({ setUser }) => {
                 </div>
             ) : (
                 <div>
-                    <SignupForm setUser={setUser} />
+                    <SignupForm setUser={setUser} setLogin={setLogin}/>
                     <button onClick={() => setLogin(true)}>Already have an account?</button>
                 </div>
             )}

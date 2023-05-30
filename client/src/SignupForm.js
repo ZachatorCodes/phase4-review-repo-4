@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SignupForm = ({ setUser }) => {
+const SignupForm = ({ setUser, setLogin }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [confirmation, setConfirmation] = useState('')
@@ -32,6 +32,7 @@ const SignupForm = ({ setUser }) => {
                 r.json().then((errors) => setErrors(errors))
             }
         })
+        .then(setLogin(true))
     }
 
     const handleUsername = (e) => {

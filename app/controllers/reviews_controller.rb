@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
             if review.valid?
                 render json: review, status: :created
             else
-                render json: { error: "Review not valid" }, status: :unprocessable_entity
+                render json: { errors: review.errors.full_messages }, status: :unprocessable_entity
             end
         else
             render json: { errors: ["not authorized"]}, status: :unauthorized
@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
         review = Review.find_by(id: params[:id])
         if user
             review.destroy
-            head :no_content, status: :no_content
+            render json: review
         else
             render json: { errors: ["not authorized"]}, status: :unauthorized
         end           
@@ -48,6 +48,6 @@ class ReviewsController < ApplicationController
     private
 
     def review_params
-        params.permit(:user_id, :encabulator_id, :body)
+        params.require(:review).permit(:user_id, :encabulator_id, :body)
     end
 end
