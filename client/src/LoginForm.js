@@ -19,7 +19,7 @@ const LoginForm = ({ setUser }) => {
             r.json().then(user => setUser(user))
             }
             else {
-                r.json().then(errors => setErrors(errors.error))
+                r.json().then(error => setErrors(error.errors))
             }
         })
     }
@@ -31,16 +31,14 @@ const LoginForm = ({ setUser }) => {
     const handlePasswordChange = (e) => {
         setPassword(e.target.value)
     }
-    const dispErrors = () => {
-        errors.map(err => <p>{err}</p>)
-    }
     
     return (
-        <form onSubmit={handleSubmit}>
+        <form id='loginForm' onSubmit={handleSubmit}>
             <label>Username</label>
             <input type='Text' value={username} onChange={handleUsernameChange} />
             <label>Password</label>
             <input type='Password' value={password} onChange={handlePasswordChange} />
+            {errors ? <p>{errors}</p> : null}
             <button>Login</button>
         </form>
     )

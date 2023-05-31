@@ -3,5 +3,5 @@ class Encabulator < ApplicationRecord
     has_many :users, through: :reviews
 
     validates :name, presence: true
-    validates :description, presence: true, length: { minimum: 50 }
+    validates :description, presence: true, length: { minimum: 20 }
 end

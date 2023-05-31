@@ -60,7 +60,7 @@ const SignupForm = ({ setUser, setLogin }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form id='signupForm' onSubmit={handleSubmit}>
             <label>Username</label>
             <input type='Text' onChange={handleUsername} value={username} />
             <label>Password</label>
@@ -69,8 +69,6 @@ const SignupForm = ({ setUser, setLogin }) => {
             <input type='Text' onChange={handleConfirmation} value={confirmation} />
             <label>Enter your display name</label>
             <input type='Text' onChange={handleName} value={name} />
-            <label>Bio</label>
-            <input type='Text' onChange={handleBio} value={bio} />
             <button>Submit</button>
         </form>
     )

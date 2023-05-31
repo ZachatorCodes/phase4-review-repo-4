@@ -36,7 +36,7 @@ function App() {
           <Home user={user} />
         </Route>
         <Route exact path = "/encabulator-list">
-          <EncabulatorList encabulators={encabulators}/>
+          <EncabulatorList encabulators={encabulators} setEncabulators={setEncabulators}/>
         </Route>
         <Route path = "/encabulator-list/:id">
           <Encabulator encabulators={encabulators} setEncabulators={setEncabulators} user={user}/>

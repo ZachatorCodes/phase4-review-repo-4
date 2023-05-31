@@ -6,16 +6,16 @@ const Login = ({ setUser }) => {
     const [login, setLogin] = useState(true)
 
     return (
-        <div>
+        <div id='login'>
             {login ? (
-                <div>
+                <div id='loginForm'>
                     <LoginForm setUser={setUser} />
-                    <button onClick= {()=>setLogin(false)}>Don't have an account?</button>
+                    <button id='loginButton' onClick= {()=>setLogin(false)}>Don't have an account?</button>
                 </div>
             ) : (
                 <div>
                     <SignupForm setUser={setUser} setLogin={setLogin}/>
-                    <button onClick={() => setLogin(true)}>Already have an account?</button>
+                    <button id='signupButton' onClick={() => setLogin(true)}>Already have an account?</button>
                 </div>
             )}
         </div>

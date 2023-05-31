@@ -18,9 +18,9 @@ const NavBar = ({ setUser }) => {
 
     return (
         <nav>
-            <NavLink to='/'>home</NavLink>
+            <NavLink to='/'>Home</NavLink>
             <NavLink to='/encabulator-list'>Encabulators</NavLink>
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleLogout} id='navButton'>Logout</button>
         </nav>
     )
 }

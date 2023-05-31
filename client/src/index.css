@@ -1,13 +1,182 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* CSS Styling for the Login page */
+#login {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    font-family: Arial, sans-serif;
+  }
+  
+  #loginForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #loginForm label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  #loginForm input[type='text'],
+  #loginForm input[type='password'] {
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  #loginButton,
+  #signupButton {
+    padding: 10px;
+    width: 100%; /* Add equal width for buttons */
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #loginButton:hover,
+  #signupButton:hover {
+    background-color: #cc0000;
+  }
+  
+  /* CSS Styling for the LoginForm component */
+  #loginForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #loginForm label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  #loginForm input[type='text'],
+  #loginForm input[type='password'] {
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  #loginForm button {
+    padding: 10px;
+    width: 100%; /* Add equal width for buttons */
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #loginForm button:hover {
+    background-color: #cc0000;
+  }
+  
+  /* CSS Styling for the SignupForm component */
+  #signupForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #signupForm label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  #signupForm input[type='text'],
+  #signupForm input[type='password'] {
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  #signupForm button {
+    padding: 10px;
+    width: 100%; /* Add equal width for buttons */
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #signupForm button:hover {
+    background-color: #cc0000;
+  }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+  nav {
+    background-color: #222;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+  }
+  
+  nav a:hover {
+    color: #ff7f50;
+  }
+  
+  nav a.active {
+    font-weight: bold;
+  }
+  
+  #navButton {
+    background-color: #ff7f50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #navButton:hover {
+    background-color: #ff6347;
+  }
+  
+  #welcomePage {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  #Welcome {
+    font-size: 28px;
+    color: #333;
+  }
+  
+  .WelcomeP {
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
+  }
+  
+  iframe {
+    width: 560px;
+    height: 315px;
+    margin: 20px 0;
+  }
+  
+  #container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #DivContainer iframe {
+    margin-bottom: 10px;
+  }
+  
+  #WelcomeA {
+    display: block;
+    font-size: 16px;
+    color: #0000ff;
+    margin-top: 10px;
+  }
+  
+  

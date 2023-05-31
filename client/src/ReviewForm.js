@@ -37,13 +37,13 @@ const ReviewForm = ({ user, currentEncab, setNewReview, setEncabulators, encabul
     const onCancelClick = () => setNewReview(false)
 
     return (
-        <div>
-            <form onSubmit={handleReviewPostClick}>
-                <label>Enter your new Review Here</label>
-                <input type='TEXT' value={review} onChange={handleReviewChange}/>
-                <button>Submit</button>            
+        <div id='reviewForm'>
+            <form onSubmit={handleReviewPostClick} id='reviewFormForm'>
+                <label id='reviewLabel'>Enter your new Review Here</label>
+                <input id='reviewInput' type='TEXT' value={review} onChange={handleReviewChange}/>
+                <button id='reviewSubButton'>Submit</button>            
             </form>
-            <button onClick={onCancelClick}>cancel</button>
+            <button id='reviewInputCancel' onClick={onCancelClick}>cancel</button>
             </div>
     )
 
