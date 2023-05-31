@@ -23,6 +23,8 @@ const EncabulatorList = ({ encabulators, setEncabulators }) => {
 
     return (
         <div>
+            <h1 id='EncabH1'>Browse through some encabulators</h1>
+            <p id='EncabP'>Don't see you favorite encabulator? Click on the button to add a new one!</p>
             {newEncab === false ? <button id='encabAddButton' onClick={onAddEncabClick}>Click to add a new encabulator</button> : <AddEncabulatorForm setNewEncab={setNewEncab} setEncabulators={setEncabulators} encabulators={encabulators}/>}
             <div>
                 {encabList}

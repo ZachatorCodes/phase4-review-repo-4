@@ -6,7 +6,6 @@ const EncabulatorCard = ({ encabulator }) => {
         <div id='encabCard'>
             <img src={encabulator.image_url} id='encabCardPic'/>
             <h3>{encabulator.name}</h3>
-            <p>{encabulator.id}</p>
             <Link id='listLink' to={`/encabulator-list/${encabulator.id}`}>Click here to learn more or add a review</Link>
         </div>
     )
