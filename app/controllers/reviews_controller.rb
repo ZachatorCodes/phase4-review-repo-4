@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
         if user
             render json: reviews, status: :ok
         else
-            render json: { errors: ["not authorized"]}, status: :unauthorized
+            render json: { errors: review.errors.full_messages }, status: :unauthorized
         end   
     end
 
@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
             review.destroy
             render json: review
         else
-            render json: { errors: ["not authorized"]}, status: :unauthorized
+            render json: {  errors: review.errors.full_messages }, status: :unauthorized
         end           
     end
 
@@ -41,7 +41,7 @@ class ReviewsController < ApplicationController
             review.update(review_params)
             render json: review, status: :created
         else
-            render json: { errors: ["not authorized"]}, status: :unauthorized
+            render json: {  errors: review.errors.full_messages }, status: :unauthorized
         end
     end
 

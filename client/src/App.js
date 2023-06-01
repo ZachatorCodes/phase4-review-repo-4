@@ -1,23 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Switch, Route } from 'react-router-dom'
 import Login from './Login';
 import NavBar from './Navbar';
 import EncabulatorList from './EncabulatorList';
 import Home from './Home';
 import Encabulator from './Encabulator';
-
+import { UserContext } from './context/UserContext';
 
 function App() {
-  const [user, setUser] = useState(null)
   const [encabulators, setEncabulators] = useState([])
-  useEffect(() => { 
-    fetch("/me")
-    .then((r) => {
-      if (r.ok) {
-        r.json().then ((user)=>setUser(user))
-      }
-    })
-  }, [])
+  const { user, setUser } = useContext(UserContext);
   
   useEffect(() => {
       fetch('/encabulators')
@@ -25,7 +17,7 @@ function App() {
       .then((item) => setEncabulators(item))
   }, [user])
 
-  if (!user) return <Login setUser={setUser} />
+  if (!user) return <Login />
   if(!encabulators) return <h2>Loading</h2>
 
   return (

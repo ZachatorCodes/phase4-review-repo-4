@@ -16,7 +16,7 @@ class EncabulatorsController < ApplicationController
             if encabulator.valid?
                 render json: encabulator, status: :created
             else
-                render json: { error: "Not a valid encabulator" }, status: :unprocessable_entity
+                render json: {  errors: encabulator.errors.full_messages  }, status: :unprocessable_entity
             end
         else
             render json: { error: "NOT AUTHORIZED"}, status: :unauthorized

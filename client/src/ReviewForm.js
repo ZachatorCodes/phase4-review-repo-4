@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const ReviewForm = ({ user, currentEncab, setNewReview, setEncabulators, encabulators }) => {
     const [review, setReview] = useState()
+    const [errors, setErrors] = useState([])
 
     const addReview = (review) => {
         const findEncab = encabulators.find((item) => item.id === currentEncab.id)
@@ -24,11 +25,15 @@ const ReviewForm = ({ user, currentEncab, setNewReview, setEncabulators, encabul
             },
             body: JSON.stringify(data),
         })
-        .then((r) => r.json())
-        .then((data) => {
-            addReview(data)
-            setReview('')
-            setNewReview(false)
+        .then ((r) => {
+            if (r.ok) {
+                r.json().then ((data) => addReview(data))
+                setReview('')
+                setNewReview(false)
+            }
+            else {
+                r.json().then((eData) => setErrors(eData.errors))
+            }
         })
     }
 
@@ -41,9 +46,10 @@ const ReviewForm = ({ user, currentEncab, setNewReview, setEncabulators, encabul
             <form onSubmit={handleReviewPostClick} id='reviewFormForm'>
                 <label id='reviewLabel'>Enter your new Review Here</label>
                 <input id='reviewInput' type='TEXT' value={review} onChange={handleReviewChange}/>
-                <button id='reviewSubButton'>Submit</button>            
+                {errors.length === 0 ? null : errors.map(error => <p className='error'>{error}</p>)}  
+                <button id='reviewSubButton'>Submit</button>        
             </form>
-            <button id='reviewInputCancel' onClick={onCancelClick}>cancel</button>
+            <button id='reviewInputCancel' onClick={onCancelClick}>Cancel</button>
             </div>
     )
 
