@@ -5,6 +5,7 @@ const AddEncabulatorForm = ({ setNewEncab, encabulators, setEncabulators }) => {
     const [image, setImage] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState()
+    const [errors, setErrors] = useState([])
     
     const onCancelClick = () => setNewEncab(false)
     
@@ -28,13 +29,19 @@ const AddEncabulatorForm = ({ setNewEncab, encabulators, setEncabulators }) => {
             },
             body: JSON.stringify(data),            
         })
-        .then((r) => r.json())
-        .then((encabulator) => addEncab(encabulator))
-        setNewEncab(false)
-        setName('')
-        setDescription('')
-        setImage('')
-        setPrice()
+        .then ((r) => {
+            if (r.ok) {
+                r.json().then ((data) => addEncab(data))
+                setNewEncab(false)
+                setName('')
+                setDescription('')
+                setImage('')
+                setPrice()
+            }
+            else {
+                r.json().then((eData) => setErrors(eData.errors))
+            }
+        })
     }
 
     const addEncab = (encab) => {
@@ -51,8 +58,9 @@ const AddEncabulatorForm = ({ setNewEncab, encabulators, setEncabulators }) => {
             <input type='TEXT' value={description} onChange={onDescriptionChange} />
             <label>Price</label>
             <input type='NUMBER' value={price} onChange={onPriceChange} />
+            {errors.length === 0 ? null : errors.map(error => <p className='error'>{error}</p>)}
             <button>Submit</button>
-            <button onClick={onCancelClick}>cancel</button>
+            <button onClick={onCancelClick}>Cancel</button>
         </form>
     )
 }

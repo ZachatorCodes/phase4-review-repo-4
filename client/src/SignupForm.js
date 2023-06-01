@@ -6,8 +6,7 @@ const SignupForm = ({ setLogin }) => {
     const [password, setPassword] = useState('')
     const [confirmation, setConfirmation] = useState('')
     const [name, setName] = useState('')
-    const [bio, setBio] = useState('')
-    const [errors, setErrors] = useState('')
+    const [errors, setErrors] = useState([])
     const { setUser } = useContext(UserContext);
 
     const handleSubmit = (e) => {
@@ -16,7 +15,6 @@ const SignupForm = ({ setLogin }) => {
             username,
             password,
             password_confirmation: confirmation,
-            bio,
             name
         }
         fetch("/signup", {
@@ -29,12 +27,12 @@ const SignupForm = ({ setLogin }) => {
         .then((r) => {
             if (r.ok) {
                 r.json().then((user) => setUser(user))
+                .then(setLogin(true))
             }
             else {
-                r.json().then((errors) => setErrors(errors))
+                r.json().then((eData) => setErrors(eData.errors))
             }
         })
-        .then(setLogin(true))
     }
 
     const handleUsername = (e) => {
@@ -52,25 +50,18 @@ const SignupForm = ({ setLogin }) => {
     const handleName = (e) => {
         setName(e.target.value)
     }
-    
-    const handleBio = (e) => {
-        setBio(e.target.value)
-    }
-
-    const dispErrors = () => {
-        errors.map(err => <p>{err}</p>)
-    }
 
     return (
         <form id='signupForm' onSubmit={handleSubmit}>
             <label>Username</label>
             <input type='Text' onChange={handleUsername} value={username} />
             <label>Password</label>
-            <input type='Text' onChange={handlePassword} value={password} />
+            <input type='Password' onChange={handlePassword} value={password} />
             <label>Confirm Password</label>
-            <input type='Text' onChange={handleConfirmation} value={confirmation} />
+            <input type='Password' onChange={handleConfirmation} value={confirmation} />
             <label>Enter your display name</label>
             <input type='Text' onChange={handleName} value={name} />
+            {errors.length === 0 ? null : errors.map(error => <p className='error'>{error}</p>)} 
             <button>Submit</button>
         </form>
     )
