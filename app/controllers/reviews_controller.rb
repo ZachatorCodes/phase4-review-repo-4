@@ -15,13 +15,15 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-        review = Review.find_by(id: params[:id])
+        user = User.find_by(id: session[:user_id])
+        review = user.reviews.find_by(id: params[:id])
         review.destroy
         render json: review      
     end
 
     def update
-        review = Review.find_by(id: params[:id])        
+        user = User.find_by(id: session[:user_id])
+        review = user.reviews.find_by(id: params[:id])      
         if review.update(review_params)
             render json: review, status: :created
         else
