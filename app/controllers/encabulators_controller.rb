@@ -1,4 +1,5 @@
 class EncabulatorsController < ApplicationController
+    skip_before_action :authorize, only: :encabulator_reviews
     def index
         encabulators = Encabulator.all
         render json: encabulators, status: :ok
@@ -11,6 +12,11 @@ class EncabulatorsController < ApplicationController
         else
             render json: {  errors: encabulator.errors.full_messages  }, status: :unprocessable_entity
         end
+    end
+
+    def encabulator_reviews
+        encabulators = Encabulator.all
+        render json: encabulators.find_all { |e| e.reviews.length >= params[:n].to_i }
     end
 
     private
