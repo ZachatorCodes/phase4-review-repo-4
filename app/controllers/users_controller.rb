@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize, only: [:create]
+    skip_before_action :authorize, only: [:create, :challenge]
     def create
         user = User.create(user_params)
         if user.valid?
@@ -14,6 +14,8 @@ class UsersController < ApplicationController
         user = User.find_by(id: session[:user_id])
         render json: user, status: :ok
     end
+
+  
 
     private
 
