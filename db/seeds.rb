@@ -9,7 +9,7 @@ end
 
 20.times do 
 
-    Encabulator.create(name: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(200..4000), image_url: "app/images/turboencabulator-100385639-orig.webp")
+    Encabulator.create(name: Faker::Commerce.product_name, description: Faker::Lorem.sentence(word_count: rand(5..12)), price: rand(200..4000), image_url: "app/images/turboencabulator-100385639-orig.webp")
 
 end
 
