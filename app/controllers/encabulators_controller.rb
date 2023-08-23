@@ -1,5 +1,5 @@
 class EncabulatorsController < ApplicationController
-    skip_before_action :authorize, only: :encabulator_reviews
+    skip_before_action :authorize, only: [:encabulator_reviews, :custom]
     def index
         encabulators = Encabulator.all
         render json: encabulators, status: :ok
@@ -14,14 +14,12 @@ class EncabulatorsController < ApplicationController
         end
     end
 
-    def encabulator_reviews
-        encabulators = Encabulator.all
-        render json: encabulators.find_all { |e| e.reviews.length >= params[:n].to_i }
-    end
 
+  
     private
 
     def encabulator_params
         params.permit(:name, :description, :price, :image_url)
     end
 end
+

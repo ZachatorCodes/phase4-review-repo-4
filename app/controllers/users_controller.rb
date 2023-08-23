@@ -15,7 +15,19 @@ class UsersController < ApplicationController
         render json: user, status: :ok
     end
 
-  
+    def challenge 
+        
+        # Make a custom route that finds all users that have a review that is over n characters 
+        number = params[:n]
+        users = User.all
+        selected_users = users.select do |user| 
+            #does the user have any reviews that are longer than number
+            filtered_reviews = user.reviews.filter {|review| review.body.length > number.to_i}
+            !filtered_reviews.empty?
+        end
+        render json: selected_users
+        # [1,2,3,4,5].select {|num| num.even? }     #=> [2, 4]
+    end
 
     private
 
@@ -23,3 +35,8 @@ class UsersController < ApplicationController
         params.permit(:username, :password, :name, :bio, :password_confirmation)
     end
 end
+
+
+# Make a custom route that finds all users that have a review that is over n characters where n is a param sent back in the route.
+# Once you find the users that fit that criterion, turn around and find all the encabulators that those users have written about and render this back as json. 
+#If you don’t find any users that meet the criterion, write a descriptive message telling us that we should search again with a smaller than n parameter.
