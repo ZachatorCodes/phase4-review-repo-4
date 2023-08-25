@@ -15,19 +15,6 @@ class UsersController < ApplicationController
         render json: user, status: :ok
     end
 
-    def challenge 
-        
-        # Make a custom route that finds all users that have a review that is over n characters 
-        number = params[:n]
-        users = User.all
-        selected_users = users.select do |user| 
-            #does the user have any reviews that are longer than number
-            filtered_reviews = user.reviews.filter {|review| review.body.length > number.to_i}
-            !filtered_reviews.empty?
-        end
-        render json: selected_users
-        # [1,2,3,4,5].select {|num| num.even? }     #=> [2, 4]
-    end
 
     private
 
