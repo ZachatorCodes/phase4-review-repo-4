@@ -1,5 +1,6 @@
 class EncabulatorsController < ApplicationController
-    skip_before_action :authorize, only: [:encabulator_reviews, :custom]
+    skip_before_action :authorize, only: [:encabulator_reviews, :find_words, :custom]
+
     def index
         encabulators = Encabulator.all
         render json: encabulators, status: :ok
@@ -14,7 +15,10 @@ class EncabulatorsController < ApplicationController
         end
     end
 
-
+    def description
+        found_encs = Encabulator.find_words(params[:id])
+        render json: found_encs
+    end
   
     private
 
