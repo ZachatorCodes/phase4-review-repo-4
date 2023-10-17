@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get "/encabulators/:word", to: "encabulators#description"
 
-
+  get "/charcount/:num", to: "users#charcount"
 end
 
