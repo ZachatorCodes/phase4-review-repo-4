@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize, only: [:create, :challenge]
+    skip_before_action :authorize, only: [:create, :challenge, :charcount]
     def create
         user = User.create(user_params)
         if user.valid?
@@ -15,15 +15,24 @@ class UsersController < ApplicationController
         render json: user, status: :ok
     end
 
+    def charcount
+        reviews = Review.all
+
+        filtered_reviews = reviews.select {|review| review.body.length > params[:num].to_i}
+
+        if (filtered_reviews.length == 0)
+            render json: {error: "No review contains more than #{params[:num]} characters. Please try again with a smaller value."}
+        else
+            users = filtered_reviews.map {|review| review.user}
+            render json: users
+        end           
+    end
+
 
     private
 
     def user_params
         params.permit(:username, :password, :name, :bio, :password_confirmation)
     end
+
 end
-
-
-# Make a custom route that finds all users that have a review that is over n characters where n is a param sent back in the route.
-# Once you find the users that fit that criterion, turn around and find all the encabulators that those users have written about and render this back as json. 
-#If you don’t find any users that meet the criterion, write a descriptive message telling us that we should search again with a smaller than n parameter.
