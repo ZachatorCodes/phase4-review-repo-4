@@ -19,5 +19,3 @@ class Encabulator < ApplicationRecord
     end
 
 end
-
-
